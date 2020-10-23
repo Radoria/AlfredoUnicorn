@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c51e3739dc4e944a235000fec6c69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSpeed: 8
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -361,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FloorBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618607855088177683, guid: 8fba8e843e2aeb248a4afa636685f5f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 2618607855088177686, guid: 8fba8e843e2aeb248a4afa636685f5f4,
         type: 3}
@@ -511,6 +517,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FloorBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618607855088177683, guid: 8fba8e843e2aeb248a4afa636685f5f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 2618607855088177686, guid: 8fba8e843e2aeb248a4afa636685f5f4,
         type: 3}

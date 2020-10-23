@@ -6,7 +6,9 @@ public class Character : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     private BoxCollider2D box2d;
-
+    private bool IsGrounded;
+    
+    public float jumpSpeed = 8f;
     public LayerMask platformLayerMask;
 
        // Start is called before the first frame update
@@ -19,16 +21,26 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
-       {
-           float jumpSpeed = 8f; 
-           rb2d.velocity = Vector3.up * jumpSpeed;
-       }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
-    private bool IsGrounded()
+
+    void OnCollisionEnter2D(Collision2D col) 
     {
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(box2d.bounds.center, box2d.bounds.size, 0f, Vector3.down * .1f, platformLayerMask);
-        Debug.Log(raycastHit2d.collider);
-        return raycastHit2d.collider != null;
+        if (col.gameObject.tag == "Ground")
+        {
+            IsGrounded = true;
+        }
+    }
+
+    void Jump()
+    {
+        if (IsGrounded)
+        {
+            rb2d.velocity = Vector3.up * jumpSpeed;
+            IsGrounded = false;
+        }
     }
 }
