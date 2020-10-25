@@ -4,3 +4,4 @@
 /.vs/*
 /Assembly-CSharp.csproj
 /*.sln
+/Logs/*

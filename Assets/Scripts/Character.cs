@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     private bool IsGrounded;
     
     public float jumpSpeed = 8f;
+    private float veloMovimento = 10f;
     public LayerMask platformLayerMask;
 
        // Start is called before the first frame update
@@ -25,8 +26,37 @@ public class Character : MonoBehaviour
         {
             Jump();
         }
+        
+        Movement();
     }
 
+    private void Movement()
+    {
+        //se o jogador cair das plataformas
+        if (transform.position.y < -6.14f)
+        {
+            transform.position = new Vector3(-7.12f, -3.31f, 1.75f);
+        }
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb2d.velocity = new Vector3(-veloMovimento, rb2d.velocity.y);
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.D))
+        {
+            rb2d.velocity = new Vector3(+veloMovimento, rb2d.velocity.y);
+        }
+        else 
+        {
+            //parado
+            rb2d.velocity = new Vector3(0, rb2d.velocity.y);
+        }
+        
+        }
+
+    }
     void OnCollisionEnter2D(Collision2D col) 
     {
         if (col.gameObject.tag == "Ground")
@@ -43,4 +73,5 @@ public class Character : MonoBehaviour
             IsGrounded = false;
         }
     }
+
 }
